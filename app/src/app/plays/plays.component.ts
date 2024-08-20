@@ -25,9 +25,10 @@ export class PlaysComponent implements AfterViewInit {
 
   @ViewChild('field', { static: true }) field!: ElementRef<HTMLCanvasElement>;
 
-  plays: Play[] = undefined;
+  plays: Play[] = [];
   actualPlay: number = 0;
   yardLine: number;
+  pageIndex = 1;
   
   constructor( private htttpClient: HttpClient, private route: ActivatedRoute,) {
 
@@ -35,6 +36,7 @@ export class PlaysComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.drawCanvas();
+    tefdsgfhd
   }
 
   ngOnInit() {
@@ -44,13 +46,17 @@ export class PlaysComponent implements AfterViewInit {
   getPlays(): void {
     this.htttpClient
       .get<any>(
-        'http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/' + this.eventId + '/competitions/' + this.eventId + '/plays'
+        'http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/' + this.eventId + '/competitions/' + this.eventId + '/plays?page=' + this.pageIndex
       )
       .subscribe((x) => {
         console.log(x);
-        this.plays = x.items;
+        this.plays.push(...x.items);
         this.updateYardLine();
         this.clearRedrawCanvas();
+        if (this.pageIndex < x.pageCount) {
+          this.pageIndex++;
+          this.getPlays();
+        }
       });
   }
 
