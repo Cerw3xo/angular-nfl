@@ -1,0 +1,74 @@
+<main>
+  <section>
+    <h2>American <span>Football Conference</span></h2>
+
+    <div class="AFC">
+      <article>
+        <h3 class="heading">East</h3>
+        <div class="div" *ngFor="let team of filterByDivision(Division.AFCEast)">
+          <a [routerLink]="'team/' + team.id">{{ team.name }}</a>
+        </div>
+      </article>
+
+      <article>
+        <h3 class="heading">North</h3>
+        <div class="div" *ngFor="let team of filterByDivision(Division.AFCNorth)">
+          <a [routerLink]="'team/' + team.id">{{ team.name }}</a>
+        </div>
+      </article>
+
+      <article>
+        <h3 class="heading">South</h3>
+
+        <div class="div" *ngFor="let team of filterByDivision(Division.AFCSouth)">
+          <a [routerLink]="'team/' + team.id">{{ team.name }}</a>
+        </div>
+      </article>
+
+      <article>
+        <h3 class="heading">West</h3>
+
+        <div class="div" *ngFor="let team of filterByDivision(Division.AFCWest)">
+          <a [routerLink]="'team/' + team.id">{{ team.name }}</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>National <span>Football Conference</span></h2>
+
+    <div class="NFC">
+      <article>
+        <h3 class="heading">East</h3>
+        <div class="div" *ngFor="let team of filterByDivision(Division.NFCEast)">
+          <a [routerLink]="'team/' + team.id">{{ team.name }}</a>
+        </div>
+      </article>
+
+      <article>
+        <h3 class="heading">North</h3>
+
+        <div class="div" *ngFor="let team of filterByDivision(Division.NFCNorth)">
+          <a [routerLink]="'team/' + team.id">{{ team.name }}</a>
+        </div>
+      </article>
+
+      <article>
+        <h3 class="heading">South</h3>
+
+        <div class="div" *ngFor="let team of filterByDivision(Division.NFCSouth)">
+          <a [routerLink]="'team/' + team.id">{{ team.name }}</a>
+        </div>
+      </article>
+
+      <article>
+        <h3 class="heading">West</h3>
+
+        <div class="div" *ngFor="let team of filterByDivision(Division.NFCWest)">
+          <a [routerLink]="'team/' + team.id">{{ team.name }}</a>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>

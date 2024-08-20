@@ -1,0 +1,38 @@
+<main class="main">
+  <div class="main-content">
+    <div class="container-head">
+      <img class="nfl" src="assets/images/National_Football_League_logo.svg.png" alt="logo" />
+      <h1 class="heading">
+        {{ teamData?.team?.location }} <span>{{ teamData?.team?.name }} </span>
+      </h1>
+    </div>
+
+    <div class="team-container">
+      <div class="team-img">
+        <img src="{{teamData?.team?.logos?.[0]?.href}}" alt="logos" />
+        <p>
+          <a [routerLink]="'/stadium/' + teamData?.team?.franchise?.venue?.id"><span>➣</span>{{
+            teamData?.team?.franchise?.venue?.fullName }}</a>
+           {{ teamData?.team?.location }}
+        </p>
+      </div>
+
+      <div class="team-content">
+        <ul>
+          <li>{{ teamData?.team?.nickname }}</li>
+          <li>{{ teamData?.team?.abbreviation }}</li>
+          <li>{{ teamData?.team?.record?.items?.[0]?.summary}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="roster-container">
+          <a *ngIf="teamData?.team?.id" class="roster" [routerLink]="'/roster/' + teamData?.team?.id">Roster</a>
+    </div>
+  </div>
+
+  <div class="rival-container">
+    <h3 class="rival-heading">Rivals</h3>
+    <a class="rival-content" [routerLink]="'/team/' + rival.id " *ngFor="let rival of rivals">{{ rival.name }} </a>
+  </div>
+</main>

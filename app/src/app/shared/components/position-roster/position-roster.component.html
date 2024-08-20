@@ -1,0 +1,6 @@
+<main class="main">
+<div class="position" *ngIf="rosterData?.items.length" > {{ rosterData?.position}}</div>
+<div class="roster" *ngFor="let athlete of rosterData?.items">
+    <span (click)="onAthleteClick(athlete?.id)" class="fullname">{{athlete?.fullName}}</span>
+</div>
+</main>

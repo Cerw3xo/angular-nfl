@@ -1,0 +1,50 @@
+<section class="roster-container">
+    <div class="roster-item">
+        <div class="btn-container">
+            <button (click)="setSelectedPosition(PositionWeb.Offense)">
+                Offense
+            </button>
+            <button (click)="setSelectedPosition(PositionWeb.Defense)">
+                Defense
+            </button>
+            <button (click)="setSelectedPosition(PositionWeb.Special)">
+                Special
+            </button>
+        </div>
+
+        <div class="scroll-bar" *ngIf="selectedPosition == PositionWeb.Offense">
+            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.Offense)" (selectAthlete)="selectedAthlete($event)"></position-roster>
+        </div>
+
+        <div class="scroll-bar" *ngIf="selectedPosition == PositionWeb.Defense">
+            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.Defense)" (selectAthlete)="selectedAthlete($event)"></position-roster>
+        </div>
+
+        <div *ngIf="selectedPosition == PositionWeb.Special">
+            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.SpecialTeam)" (selectAthlete)="selectedAthlete($event)"></position-roster>
+            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.Suspended)" (selectAthlete)="selectedAthlete($event)"></position-roster>
+            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.Injured)" (selectAthlete)="selectedAthlete($event)"></position-roster>
+            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.Practice)" (selectAthlete)="selectedAthlete($event)"></position-roster>
+        </div>
+    </div>
+
+
+    <div class="player-item">
+        <div *ngIf="athlete?.headshot?.href" class="player-img-container">
+            <img  src="{{athlete?.headshot?.href}}" alt="" class="player-img">
+        </div>
+
+        <div class="player-heading">
+            <h1>{{athlete?.fullName}}</h1>
+            <h3>{{athlete?.position?.name}}</h3>
+        </div>
+
+        <div class="info-container">
+            <p>{{athlete?.displayHeight}}, {{athlete?.displayWeight}}</p>
+            <p>{{athlete?.dateOfBirth | date:'mediumDate'}}</p>
+            <p>Exp: {{athlete?.experience?.years}} years</p>
+            <!-- <p>{{2000203022 | number:'11.1-5'}}</p> -->
+        </div>
+        
+    </div>
+</section>

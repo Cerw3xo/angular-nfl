@@ -1,0 +1,50 @@
+<main class="main">
+    <div class="selectors">
+    <!-- <select class="years btn" (change)="loadSeasonBackUp($event)">
+        <option class="option" *ngFor="let season of seasonList" value="{{season}}">{{season}}</option>
+    </select> -->
+    <button class="btn" mat-raised-button (click)="onLeftClick()" [disabled]="year == seasonList[seasonList.length - 1]">
+        <
+    </button>
+
+    <mat-form-field>
+        <mat-label>Years</mat-label>
+        <mat-select [ngModel]="year" (selectionChange)="loadSeason($event.value)" name="year">
+            @for (season of seasonList; track season) {
+            <mat-option [value]="season">{{ season }}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+
+    <button class="btn" mat-raised-button (click)="onRightClick()" [disabled]="year == seasonList[0]">
+      >
+    </button>
+    <!-- <select class="weeks btn" *ngIf="seasonData" (change)="loadWeekBackUp($event)">
+        <option *ngFor="let week of seasonData?.items; let index = index;" value="{{index}}">Week {{index + 1}}</option>
+    </select> -->
+
+    <button class="btn" mat-raised-button (click)="onWeekLeftClick()" > < </button>
+
+    <mat-form-field>
+        <mat-label>Game Weeks</mat-label>
+        <mat-select [ngModel]="week" (selectionChange)="loadWeek($event.value)" name="week">
+            @for (week of seasonData?.items; track week; let index = $index;) {
+            <mat-option [value]="index + 1">Week {{ index + 1 }}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+
+    <button class="btn" mat-raised-button (click)="onWeekRightClick()" > > </button>
+</div>
+
+<div class="teams">
+    <ng-container  *ngIf="weekData">
+    <div *ngFor="let match of weekData?.items">
+        <match-selector  [url]="match.$ref" ></match-selector>
+      
+    </div>
+</ng-container>
+</div>
+
+</main>
+

@@ -1,0 +1,31 @@
+<main>
+  <div class="btn-container">
+    <button (click)="changeActualPlay(-1)">Previous Game</button>
+    <button (click)="changeActualPlay(+1)">Next Game</button>
+    <!-- <button (click)="showTime()">Next</button> -->
+  </div>
+
+  <div class="period-container">
+
+    <p class="period"> Period: {{plays?.[actualPlay]?.period?.number}} </p>
+    <p class="actual-play"> {{plays?.[actualPlay]?.type?.text}} - <span
+        class="actual-play-span">{{plays?.[actualPlay]?.clock.displayValue}}</span></p>
+
+  </div>
+
+
+  <div class="game-container">
+
+    <p class="game">{{plays?.[actualPlay]?.shortAlternativeText}}</p>
+
+    <div class="score-container">
+      <p [style.color]=" '#' +awayTeamData?.team?.color">{{plays?.[actualPlay]?.awayScore}}</p>
+      <span> : </span>
+      <p [style.color]=" '#' +homeTeamData?.team?.color"> {{plays?.[actualPlay]?.homeScore}}</p>
+    </div>
+
+
+    <canvas class="field" #field width="500" height="250"></canvas>
+
+  </div>
+</main>

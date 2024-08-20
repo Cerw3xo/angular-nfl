@@ -1,0 +1,13 @@
+<main class="main">
+  <div class="container-team">
+    
+    <h1 class="heading">
+      {{ venueData?.fullName }} <br> <span class="sp">⚲</span> <span> {{ venueData?.address?.city }} </span>
+    </h1>
+
+    <div class="inOut" *ngIf="venueData?.indoor">Indoor</div>
+    <div class="inOut" *ngIf="!venueData?.indoor">Outdoor</div>
+
+    <img src="{{ venueData?.images?.[0]?.href }}" alt="stadium" />
+  </div>
+</main>

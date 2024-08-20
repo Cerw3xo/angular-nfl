@@ -1,0 +1,50 @@
+.teams {
+     position: relative;
+     color: var(--text-color);
+     font-size: 1.2em;
+     font-weight: 200;
+     line-height: 1.56rem;
+     text-align: center;
+     text-decoration: none;
+     margin-bottom: .2rem;
+}
+
+.teams-container {
+     display: flex;
+     align-items: baseline;
+     justify-content: center;
+}
+
+.teams::before {
+     content: '';
+     position: absolute;
+     left: 0;
+     bottom: .2rem;
+     width: 100%;
+     height: 1px;
+     background: var(--second-color);
+     transform-origin: right;
+     transform: scaleX(0);
+     transition: transform .5s;
+}
+
+.teams:hover::before {
+     transform-origin: left;
+     transform: scaleX(1);
+}
+
+@media (max-width: 880px) {
+     .teams {
+          font-size: 1.1rem;
+          line-height: 1.5rem;
+          margin-bottom: 0;
+
+     }
+}
+
+@media (max-width: 560px) {
+     .teams {
+          font-size: .71rem;
+          line-height: 1.15rem;
+     }
+}
