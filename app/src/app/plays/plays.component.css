@@ -67,7 +67,7 @@ main {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: max-content;
+    width: 3rem;
     height: 1.7rem;
     background-color: transparent;
     border-radius: 20rem;

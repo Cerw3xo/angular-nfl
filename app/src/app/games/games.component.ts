@@ -44,8 +44,6 @@ export class GamesComponent {
   }
 
     loadSeason (value: number): void {
-
-
       this.year = value;
       this.htttpClient
       .get<any>(
@@ -59,8 +57,6 @@ export class GamesComponent {
     }
 
     loadSeasonBackUp (event : Event): void {
-    
-
       this.year = +(event.target as HTMLSelectElement).value;
       this.htttpClient
       .get<any>(
@@ -71,6 +67,8 @@ export class GamesComponent {
         this.seasonData = x;
       });
     }
+
+ 
 
     loadWeek (value : number ): void {
       this.week = value;

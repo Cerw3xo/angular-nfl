@@ -27,6 +27,12 @@ export class MatchComponent {
     this.loadMatch();
   }
 
+  isUpcoming ( date: string) : boolean {
+    const matchDate = new Date(date);
+    const today = new Date();
+    return matchDate > today;
+  }
+
     loadMatch (): void {
 
       this.htttpClient

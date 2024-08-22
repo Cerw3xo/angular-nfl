@@ -27,7 +27,8 @@ export class PlaysComponent implements AfterViewInit {
 
   plays: Play[] = [];
   actualPlay: number = 0;
-  yardLine: number;
+  startYardLine: number;
+  endYardLine: number;
   pageIndex = 1;
   
   constructor( private htttpClient: HttpClient, private route: ActivatedRoute,) {
@@ -36,7 +37,6 @@ export class PlaysComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.drawCanvas();
-    tefdsgfhd
   }
 
   ngOnInit() {
@@ -61,8 +61,10 @@ export class PlaysComponent implements AfterViewInit {
   }
 
   updateYardLine() {
-    this.yardLine = this.plays?.[this.actualPlay]?.end?.yardLine;
+        this.startYardLine = this.plays?.[this.actualPlay]?.start?.yardLine;
+        this.endYardLine = this.plays?.[this.actualPlay]?.end?.yardLine;
   }
+
 
   drawCanvas() {
    
@@ -121,11 +123,20 @@ export class PlaysComponent implements AfterViewInit {
       const fieldWidth = canvas.width;
       const fieldHeight = canvas.height;
 
-      const mapYard = (this.yardLine / 100) * fieldWidth;
+      const mapEndYard = (this.endYardLine / 100) * fieldWidth;
+      const mapStarYard = (this.startYardLine / 100) * fieldHeight
+
 
       ctx.beginPath();
-      ctx.moveTo(mapYard, 0);
-      ctx.lineTo(mapYard, fieldHeight);
+      ctx.moveTo(mapStarYard, 0);
+      ctx.lineTo(mapStarYard, fieldWidth);
+      ctx.strokeStyle = 'blue';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(mapEndYard, 0);
+      ctx.lineTo(mapEndYard, fieldHeight);
       ctx.strokeStyle = '#FF0000';
       ctx.lineWidth = 3;
       ctx.stroke();

@@ -13,6 +13,10 @@ export interface Play {
         displayValue: string;
     }
 
+    start: {
+        yardLine: number;
+    }
+
     end: {
         yardLine: number;
     }
