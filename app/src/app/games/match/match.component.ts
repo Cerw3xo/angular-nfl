@@ -13,9 +13,11 @@ import { Team } from '../../models/team';
   styleUrl: './match.component.css'
 })
 export class MatchComponent {
-
   
   @Input() url: string;
+
+  firstRow: string;
+  secondRow: string;
 
   matchData: Match;
 
@@ -27,25 +29,32 @@ export class MatchComponent {
     this.loadMatch();
   }
 
-  isUpcoming ( date: string) : boolean {
+  isUpcoming (date?: string) : boolean {
     const matchDate = new Date(date);
     const today = new Date();
     return matchDate > today;
   }
 
     loadMatch (): void {
-
       this.htttpClient
       .get<any>(
         this.url
       )
       .subscribe((x) => {
 
+  
         this.matchData = x;
-      
+
+        const matchName = this.matchData?.name || '';
+        let indexSepar = matchName.indexOf(' at ');
+
+        this.firstRow = matchName.slice(0, indexSepar);
+        this.secondRow = matchName.slice( indexSepar + 3);
+
+        
+        // this.firstRow = indexSepar.slice(0, indexSepar);
       });
     }
 
 
-  
 }

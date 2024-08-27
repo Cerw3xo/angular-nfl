@@ -83,17 +83,6 @@ export class GamesComponent {
       });
     }
 
-    loadWeekBackUp (event : Event): void {
-      this.htttpClient
-      .get<any>(
-        'https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/' + this.year + '/types/2/weeks/' + (event.target as HTMLSelectElement).value + '/events'
-      )
-      .subscribe((x) => {
-
-        this.weekData = x;
-      });
-    }
-
     onLeftClick(): void {
       this.year--;
       this.loadWeek(this.week);

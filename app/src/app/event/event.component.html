@@ -2,31 +2,38 @@
   <div class="container-head">
     <div class="heading-container">
       <h1> {{ eventData?.name }} </h1>
-    <h2> {{ eventData?.date | date:'fullDate'}} </h2>
+      <h2> {{ eventData?.date | date:'fullDate'}} </h2>
     </div>
-    
+
 
     <div *ngIf="!showPlays" class="result-container">
-      <div  class="team-container">
-        {{homeTeamData?.team.displayName}}
-        <p [style.color]=" '#' +homeTeamData?.team?.color" >{{homeTeamScore}}</p>
-        <img  src="{{homeTeamData?.team?.logos?.[0]?.href}}" alt="">
+      <div class="team-container">
+        <div class="displayName">
+          <span class="remainingParts">{{teamRest}}</span> <span [style.color]="'#' + homeTeamData?.team?.color " class="lastPart">{{teamPart}}</span>
+        </div>
+
+        <p>{{homeTeamScore}}</p>
+        <img src="{{homeTeamData?.team?.logos?.[0]?.href}}" alt="">
       </div>
 
       <p class="vs">vs</p>
 
-      <div class="team-container"> {{awayTeamData?.team.displayName}}
-        <p [style.color]=" '#' +awayTeamData?.team?.color">{{awayTeamScore}}</p>
+      <div class="team-container">
+        <div class="displayName">
+         <span class="remainingParts">{{awayRest}}</span><span [style.color]="'#' + awayTeamData?.team?.color" class="lastPart">{{awayPart}}</span>
+        </div>
+
+        <p> {{awayTeamScore}}</p>
         <img src="{{awayTeamData?.team?.logos?.[0]?.href}}" alt="">
       </div>
     </div>
 
     <div *ngIf="showPlays">
-     <plays [homeTeamData]="homeTeamData" [awayTeamData]="awayTeamData" [eventId]="eventData.id"></plays>
+      <plays [homeTeamData]="homeTeamData" [awayTeamData]="awayTeamData" [eventId]="eventData.id"></plays>
     </div>
 
-    <button *ngIf="!showPlays" (click)="playComponent()">Play!</button>
-    <button *ngIf="showPlays" (click)="playComponent()">Back</button>
+    <button class="playBtn" *ngIf="!showPlays" (click)="playComponent()">Play!</button>
+    <button class="backBtn" *ngIf="showPlays" (click)="playComponent()">Back</button>
     <!-- <button  (click)="showTime()">Back</button> -->
 
   </div>

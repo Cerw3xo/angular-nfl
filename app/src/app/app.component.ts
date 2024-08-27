@@ -28,22 +28,15 @@ export class AppComponent implements OnInit, AfterViewInit  {
   @ViewChild ('myParagraph') myParagraph: ElementRef;
 
   constructor(@Inject(PLATFORM_ID) platformId: object) {
-    this.isBrowser.set(isPlatformBrowser(platformId));  // save isPlatformBrowser in signal
+    this.isBrowser.set(isPlatformBrowser(platformId)); 
   }
 
 ngAfterViewInit() {
-  console.log('after view init');
-  //this.updateDate();
- 
-  //setInterval(() => {
-    //this.updateDate();
-  //}, 100);
 }
 
 ngOnInit() {
   if(this.isBrowser()) { 
     this.interval = setInterval(() => {
-      console.log('interval');
       this.updateDate();
     }, 1000);
   }

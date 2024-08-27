@@ -39,7 +39,6 @@ mat-label {
     padding: .3rem .6rem;
     width: 100%;
     height: 29rem;
-    word-spacing: .2rem;
     border-left: .1rem solid var(--other-color);
     border-right: .1rem solid var(--other-color);
     border-radius: 1rem;
@@ -91,6 +90,7 @@ mat-label {
 
     .teams {
         height: 20rem;
+        width: 22rem;
         top: -.3rem;
         border-radius: 2rem;
     }

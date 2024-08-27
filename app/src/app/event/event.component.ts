@@ -23,8 +23,14 @@ export class EventComponent {
   homeTeamScore: number;
   awayTeamScore: number;
 
+  teamRest = '';
+  teamPart = '';
+
+  awayRest = '';
+  awayPart = '';
+
   showPlays: boolean = false;
-  
+
   title = 'app';
   eventData: Match = undefined;
 
@@ -35,54 +41,70 @@ export class EventComponent {
     });
   }
 
-    getEvent (id: number): void {
-      this.htttpClient
+  getEvent(id: number): void {
+    this.htttpClient
       .get<any>(
-        'http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/'+ id
+        'http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/' + id
       )
       .subscribe((x) => {
 
         this.eventData = x;
         this.homeTeamId = this.eventData.competitions[0].competitors.find(team => team.homeAway == 'home').id;
         this.awayTeamId = this.eventData.competitions[0].competitors.find(team => team.homeAway == 'away').id;
-        this.getTeam(this.homeTeamId,true);
-        this.getTeam(this.awayTeamId,false);
-        this.getScore(this.homeTeamId,true);
-        this.getScore(this.awayTeamId,false);
+        this.getTeam(this.homeTeamId, true);
+        this.getTeam(this.awayTeamId, false);
+        this.getScore(this.homeTeamId, true);
+        this.getScore(this.awayTeamId, false);
       });
-    }
-  
-    getTeam (id: string, isHomeTeam: boolean): void {
-      this.htttpClient
-        .get<Team>(
-          'https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/'+id
-        )
-        .subscribe((x) => {
-         if(isHomeTeam){
-          this.homeTeamData = x;
-         }else{
-          this.awayTeamData = x;
-         }
-        });
-    }
+  }
 
-    getScore (id: string, isHomeTeam: boolean): void {
-      this.htttpClient
-      .get<any>(
-        'http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/' + this.eventData.id+ '/competitions/' + this.eventData.id + '/competitors/' + id + '/scores/1'
+  getTeam(id: string, isHomeTeam: boolean): void {
+    this.htttpClient
+      .get<Team>(
+        'https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/' + id
       )
-      .subscribe((x) =>{
-        if(isHomeTeam){
+      .subscribe((x) => {
+        if (isHomeTeam) {
+          this.homeTeamData = x;
+
+          const teamHome = this.homeTeamData?.team.displayName || '';
+          const teamParts = teamHome?.split(' ');
+
+          this.teamRest = teamParts.slice(0, -1).join(' ');
+          this.teamPart = teamParts[teamParts.length - 1];
+   
+        } else {
+          this.awayTeamData = x;
+
+          const teamAway = this.awayTeamData?.team.displayName || '';
+          const awayParts = teamAway?.split(' ');
+
+          this.awayRest = awayParts.slice(0, -1).join(' ');
+          this.awayPart = awayParts?.[awayParts.length - 1];
+      
+        }
+      });
+
+
+
+  }
+
+  getScore(id: string, isHomeTeam: boolean): void {
+    this.htttpClient
+      .get<any>(
+        'http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/' + this.eventData.id + '/competitions/' + this.eventData.id + '/competitors/' + id + '/scores/1'
+      )
+      .subscribe((x) => {
+        if (isHomeTeam) {
           this.homeTeamScore = x.value;
-        }else {
+        } else {
           this.awayTeamScore = x.value;
         }
-        console.log(x);
       });
-    }
-
-    playComponent() {
-      this.showPlays = !this.showPlays;
-    }
- 
   }
+
+  playComponent() {
+    this.showPlays = !this.showPlays;
+  }
+
+}

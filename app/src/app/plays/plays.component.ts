@@ -124,7 +124,7 @@ export class PlaysComponent implements AfterViewInit {
       const fieldHeight = canvas.height;
 
       const mapEndYard = (this.endYardLine / 100) * fieldWidth;
-      const mapStarYard = (this.startYardLine / 100) * fieldHeight
+      const mapStarYard = (this.startYardLine / 100) * fieldWidth;
 
 
       ctx.beginPath();

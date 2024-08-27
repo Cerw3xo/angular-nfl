@@ -1,9 +1,5 @@
 <main>
-  <div class="btn-container">
-    <button (click)="changeActualPlay(-1)">Previous</button>
-    <button (click)="changeActualPlay(+1)">Next</button>
-    <!-- <button (click)="showTime()">Next</button> -->
-  </div>
+
 
   <div class="period-container">
 
@@ -24,6 +20,10 @@
       <p [style.color]=" '#' +homeTeamData?.team?.color"> {{plays?.[actualPlay]?.homeScore}}</p>
     </div>
 
+    <div class="btn-container">
+      <button (click)="changeActualPlay(-1)">Previous</button>
+      <button (click)="changeActualPlay(+1)">Next</button>
+    </div>
 
     <canvas class="field" #field width="500" height="250"></canvas>
 

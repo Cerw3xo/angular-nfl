@@ -43,6 +43,20 @@ h1, h2, h3 {
     padding-top: 1rem;
 }
 
+.remainingParts,
+.lastPart {
+   margin-left: .45rem;
+}
+
+.lastPart {
+    text-shadow: 
+    -.7px -.7px 0 var(--text-color),
+    .7px -.7px 0 var(--text-color),
+    -.7px .7px 0 var(--text-color),
+    .7px .7px 0 var(--text-color);
+
+}
+
 .team-container {
     position: relative;
     display: flex;
@@ -50,7 +64,7 @@ h1, h2, h3 {
     align-items: center;
     justify-content: center;
     padding: .3rem .3rem;
-    font-size: 1.32rem;
+    font-size: 1.4rem;
     font-weight: 400;
 }
 
@@ -188,6 +202,16 @@ h1, h2, h3 {
     .team-container img {
         width: 6rem;
     }
+
+    .playBtn {
+        top: 3.5rem;
+    }
+
+    .backBtn {
+        position: relative;
+        top: 2rem;
+        }
+        
 
 }
 
