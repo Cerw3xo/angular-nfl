@@ -123,6 +123,10 @@ h1, h2, h3 {
     border: none;
 }
 
+.playBtn {
+    top: -1.7rem;
+}
+
 
 @media (max-width: 930px) {
     .main {

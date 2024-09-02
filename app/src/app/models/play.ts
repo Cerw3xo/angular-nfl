@@ -20,4 +20,8 @@ export interface Play {
     end: {
         yardLine: number;
     }
+
+    scoringType: {
+        displayName: string;
+    }
 }

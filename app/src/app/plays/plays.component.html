@@ -20,12 +20,25 @@
       <p [style.color]=" '#' +homeTeamData?.team?.color"> {{plays?.[actualPlay]?.homeScore}}</p>
     </div>
 
-    <div class="btn-container">
-      <button (click)="changeActualPlay(-1)">Previous</button>
-      <button (click)="changeActualPlay(+1)">Next</button>
-    </div>
+
 
     <canvas class="field" #field width="500" height="250"></canvas>
+
+    <div class="btn-container">
+      <div class="btn-media-control">
+        <button (click)="startInterval()">►</button>
+        <button (click)="stopInterval()">⎜⎜</button>
+      </div>
+
+      <div class="btn-manual-control">
+        <button (click)="changeActualPlay(-1)">Previous</button>
+        <button (click)="changeActualPlay(+1)">Next</button>
+      </div>
+    </div>
+    
+    <p id="show-score">{{ plays?.[actualPlay]?.scoringType?.displayName ? plays?.[actualPlay]?.scoringType?.displayName
+      + '!!' : '' }}</p>
+
 
   </div>
 </main>

@@ -6,7 +6,7 @@
     </div>
 
 
-    <div *ngIf="!showPlays" class="result-container">
+    <div *ngIf="showPlays" class="result-container">
       <div class="team-container">
         <div class="displayName">
           <span class="remainingParts">{{teamRest}}</span> <span [style.color]="'#' + homeTeamData?.team?.color " class="lastPart">{{teamPart}}</span>
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div *ngIf="showPlays">
+    <div *ngIf="!showPlays">
       <plays [homeTeamData]="homeTeamData" [awayTeamData]="awayTeamData" [eventId]="eventData.id"></plays>
     </div>
 

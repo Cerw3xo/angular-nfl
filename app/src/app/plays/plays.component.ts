@@ -1,7 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, Input, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { Team } from '../models/team';
-import { CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Venue } from '../models/venue';
 import { Match } from '../models/match';
@@ -30,8 +30,10 @@ export class PlaysComponent implements AfterViewInit {
   startYardLine: number;
   endYardLine: number;
   pageIndex = 1;
-  
-  constructor( private htttpClient: HttpClient, private route: ActivatedRoute,) {
+
+  interval: NodeJS.Timeout;
+
+  constructor(private htttpClient: HttpClient, private route: ActivatedRoute,) {
 
   }
 
@@ -61,13 +63,13 @@ export class PlaysComponent implements AfterViewInit {
   }
 
   updateYardLine() {
-        this.startYardLine = this.plays?.[this.actualPlay]?.start?.yardLine;
-        this.endYardLine = this.plays?.[this.actualPlay]?.end?.yardLine;
+    this.startYardLine = this.plays?.[this.actualPlay]?.start?.yardLine;
+    this.endYardLine = this.plays?.[this.actualPlay]?.end?.yardLine;
   }
 
 
   drawCanvas() {
-   
+
     const canvas = this.field.nativeElement;
     const ctx = canvas.getContext('2d');
 
@@ -94,9 +96,9 @@ export class PlaysComponent implements AfterViewInit {
         ctx.lineTo(x, fieldHeight - 7);
         ctx.stroke();
       }
-    
+
     }
- 
+
   }
 
   clearRedrawCanvas() {
@@ -144,11 +146,29 @@ export class PlaysComponent implements AfterViewInit {
   }
 
   changeActualPlay(valueChange: number) {
-    this.actualPlay = this.actualPlay + valueChange;
-    this.updateYardLine();
-    this.clearRedrawCanvas();
-
+    const controlPlay = this.actualPlay + valueChange;
+    if (controlPlay >= 0 && controlPlay < this.plays.length) {
+      this.actualPlay = controlPlay;
+      this.updateYardLine();
+      this.clearRedrawCanvas();
+    }
   }
+
+  startInterval() {
+    if (this.interval == undefined) {
+      this.interval = setInterval(() => {
+        this.changeActualPlay(1)
+      }, 2000);
+    }
+  }
+
+
+  stopInterval() {
+    clearInterval(this.interval);
+    this.interval = undefined;
+  }
+
+
 
 
 }
