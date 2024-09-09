@@ -13,7 +13,7 @@ import { PlaysComponent } from "../plays/plays.component";
   standalone: true,
   imports: [CommonModule, PlaysComponent],
   templateUrl: './event.component.html',
-  styleUrl: './event.component.css'
+  styleUrl: './event.component.scss'
 })
 export class EventComponent {
   homeTeamId: string;

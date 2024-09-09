@@ -11,7 +11,7 @@ import { TeamService } from '../services/team-service';
   imports: [CommonModule, RouterModule ],
   providers: [ TeamService ],
   templateUrl: './team-list.component.html',
-  styleUrl: './team-list.component.css',
+  styleUrl: './team-list.component.scss',
 })
 export class TeamListComponent {
 Division = Division;

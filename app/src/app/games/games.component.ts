@@ -21,7 +21,7 @@ import {MatButtonModule} from '@angular/material/button';
   standalone: true,
   imports: [CommonModule, MatchComponent, FormsModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatButtonModule, MatDividerModule, MatIconModule, RouterModule ],
   templateUrl: './games.component.html',
-  styleUrl: './games.component.css'
+  styleUrl: './games.component.scss'
 })
 export class GamesComponent {
   title = 'app';

@@ -15,7 +15,7 @@ import { Play } from '../models/play';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './plays.component.html',
-  styleUrl: './plays.component.css'
+  styleUrl: './plays.component.scss'
 })
 
 export class PlaysComponent implements AfterViewInit {

@@ -13,7 +13,7 @@ import { isPlatformBrowser } from '@angular/common';
   imports: [RouterOutlet, RouterLink, RouterLinkActive, HttpClientModule, TeamComponent],
   // declarations: [TeamComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit, AfterViewInit  {
   title = 'app';

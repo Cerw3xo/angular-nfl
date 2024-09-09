@@ -11,7 +11,7 @@ import { Venue } from '../models/venue';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './stadium.component.html',
-  styleUrl: './stadium.component.css'
+  styleUrl: './stadium.component.scss'
 })
 export class StadiumComponent {
   title = 'app';

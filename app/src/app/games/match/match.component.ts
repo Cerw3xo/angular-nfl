@@ -10,7 +10,7 @@ import { Team } from '../../models/team';
   standalone: true,
   imports: [CommonModule,RouterLink],
   templateUrl: './match.component.html',
-  styleUrl: './match.component.css'
+  styleUrl: './match.component.scss'
 })
 export class MatchComponent {
   

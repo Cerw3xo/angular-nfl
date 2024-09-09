@@ -13,7 +13,7 @@ import { PositionAPI } from '../../../enums/position-api';
   standalone: true,
   imports: [RouterModule, CommonModule, PositionRosterComponent ],
   templateUrl: './roster.component.html',
-  styleUrl: './roster.component.css',
+  styleUrl: './roster.component.scss',
 })
 export class RosterComponent {
   PositionWeb = PositionWeb;

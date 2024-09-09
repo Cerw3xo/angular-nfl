@@ -11,7 +11,7 @@ import { PositionRoster, Roster } from '../../../models/roster';
   standalone: true,
   imports: [RouterModule, CommonModule],
   templateUrl: './position-roster.component.html',
-  styleUrl: './position-roster.component.css',
+  styleUrl: './position-roster.component.scss',
 })
 export class PositionRosterComponent { 
   title = 'app';

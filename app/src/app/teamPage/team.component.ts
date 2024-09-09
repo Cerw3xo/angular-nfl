@@ -14,7 +14,7 @@ import { TeamListItem } from '../models/team-list-item';
   imports: [RouterModule, RosterComponent, CommonModule],
   providers: [ TeamService ],
   templateUrl: './team.component.html',
-  styleUrl: './team.component.css',
+  styleUrl: './team.component.scss',
 })
 export class TeamComponent {
   title = 'app';
