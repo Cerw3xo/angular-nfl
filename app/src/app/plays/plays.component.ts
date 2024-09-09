@@ -1,5 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, Input, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input, AfterViewInit, ElementRef, ViewChild, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Team } from '../models/team';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -16,8 +17,8 @@ import { Play } from '../models/play';
   templateUrl: './plays.component.html',
   styleUrl: './plays.component.css'
 })
-export class PlaysComponent implements AfterViewInit {
 
+export class PlaysComponent implements AfterViewInit {
 
   @Input() homeTeamData: Team;
   @Input() awayTeamData: Team;
@@ -33,28 +34,34 @@ export class PlaysComponent implements AfterViewInit {
 
   interval: NodeJS.Timeout;
 
-  constructor(private htttpClient: HttpClient, private route: ActivatedRoute,) {
+  constructor(private htttpClient: HttpClient, private route: ActivatedRoute, @Inject(PLATFORM_ID) private platformId: Object) {
 
   }
 
   ngAfterViewInit() {
-    this.drawCanvas();
+    if (isPlatformBrowser(this.platformId)) {
+      this.drawCanvas();
+    }
   }
 
   ngOnInit() {
     this.getPlays();
   }
 
+
   getPlays(): void {
     this.htttpClient
-      .get<any>(
-        'http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/' + this.eventId + '/competitions/' + this.eventId + '/plays?page=' + this.pageIndex
+      .get<{ items: Play[], pageCount: number }>(
+        'https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/' + this.eventId + '/competitions/' + this.eventId + '/plays?page=' + this.pageIndex
       )
       .subscribe((x) => {
-        console.log(x);
-        this.plays.push(...x.items);
-        this.updateYardLine();
-        this.clearRedrawCanvas();
+        if (isPlatformBrowser(this.platformId)) {
+          this.plays.push(...x.items.filter(x => x.type.text !== 'Official Timeout'));
+          this.updateYardLine();
+          this.clearRedrawCanvas();
+
+        }
+
         if (this.pageIndex < x.pageCount) {
           this.pageIndex++;
           this.getPlays();
@@ -77,24 +84,49 @@ export class PlaysComponent implements AfterViewInit {
       const fieldWidth = canvas.width;
       const fieldHeight = canvas.height;
       const lineSpacing = fieldWidth / 10;
+      const secondLine = fieldWidth / 20;
 
       //background field
-      ctx.fillStyle = '#1FC55E';
+      ctx.fillStyle = '#66e3a9';
       ctx.fillRect(0, 0, fieldWidth, fieldHeight);
-
 
       //vertical lines
       ctx.strokeStyle = '#FFFFFF';
       ctx.lineWidth = 2;
-      ctx.lineCap = 'butt';
-
+      ctx.lineCap = 'round';
 
       for (let i = 0; i <= 10; i++) {
         const x = i * lineSpacing;
         ctx.beginPath();
         ctx.moveTo(x, 7);
-        ctx.lineTo(x, fieldHeight - 7);
+        ctx.lineTo(x, fieldHeight - 22);
         ctx.stroke();
+      }
+
+      //5 YARDS LINE
+      for (let i = 0; i <= 20; i++) {
+        const y = i * secondLine;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(y, 9);
+        ctx.lineTo(y, fieldHeight - 9);
+        ctx.stroke();
+      }
+      //YARD LINE NUMBERS 
+      ctx.font = '26px Poppins';
+      ctx.fillStyle = '#FFFFFF';
+      ctx.textAlign = 'center';
+
+      for (let i = 0; i < 5; i++) {
+        const yardNumber = 50 - (i * 10);
+        const xPositionLeft = (fieldWidth / 2) - (i * lineSpacing);
+        const xPositionRight = (fieldWidth / 2) + (i * lineSpacing);
+
+        ctx.fillText(yardNumber.toString(), xPositionLeft, fieldHeight - 3);
+
+        if (yardNumber !== 50) {
+          ctx.fillText(yardNumber.toString(), xPositionRight, fieldHeight - 3);
+        }
       }
 
     }
@@ -128,27 +160,31 @@ export class PlaysComponent implements AfterViewInit {
       const mapEndYard = (this.endYardLine / 100) * fieldWidth;
       const mapStarYard = (this.startYardLine / 100) * fieldWidth;
 
-
+      //DRAW LINE START
       ctx.beginPath();
       ctx.moveTo(mapStarYard, 0);
       ctx.lineTo(mapStarYard, fieldWidth);
-      ctx.strokeStyle = 'blue';
+      ctx.strokeStyle = '#0099e4';
       ctx.lineWidth = 3;
       ctx.stroke();
 
+
+      //DRAW LINE END
       ctx.beginPath();
       ctx.moveTo(mapEndYard, 0);
       ctx.lineTo(mapEndYard, fieldHeight);
-      ctx.strokeStyle = '#FF0000';
+      ctx.strokeStyle = '#ae2761';
       ctx.lineWidth = 3;
       ctx.stroke();
     }
   }
 
+
   changeActualPlay(valueChange: number) {
     const controlPlay = this.actualPlay + valueChange;
     if (controlPlay >= 0 && controlPlay < this.plays.length) {
       this.actualPlay = controlPlay;
+      console.log(this.actualPlay, this.plays[this.actualPlay]);
       this.updateYardLine();
       this.clearRedrawCanvas();
     }

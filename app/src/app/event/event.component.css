@@ -123,10 +123,6 @@ h1, h2, h3 {
     border: none;
 }
 
-.playBtn {
-    top: -1.7rem;
-}
-
 
 @media (max-width: 930px) {
     .main {
@@ -145,6 +141,12 @@ h1, h2, h3 {
     .container-head button {
         font-size: .95rem;
         width: 4.7rem;
+    }
+
+
+    .heading-container {
+        position: relative;
+        top: -1rem;
     }
 }
 

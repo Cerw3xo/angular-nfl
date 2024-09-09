@@ -15,6 +15,7 @@ export interface Play {
 
     start: {
         yardLine: number;
+        downDistanceText: string;
     }
 
     end: {

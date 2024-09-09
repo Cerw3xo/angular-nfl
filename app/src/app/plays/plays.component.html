@@ -1,25 +1,20 @@
 <main>
 
-
   <div class="period-container">
-
     <p class="period"> Period: {{plays?.[actualPlay]?.period?.number}} </p>
     <p class="actual-play"> {{plays?.[actualPlay]?.type?.text}} - <span
         class="actual-play-span">{{plays?.[actualPlay]?.clock?.displayValue}}</span></p>
-
   </div>
 
 
   <div class="game-container">
-
     <p class="game">{{plays?.[actualPlay]?.shortAlternativeText}}</p>
-
     <div class="score-container">
       <p [style.color]=" '#' +awayTeamData?.team?.color">{{plays?.[actualPlay]?.awayScore}}</p>
       <span> : </span>
       <p [style.color]=" '#' +homeTeamData?.team?.color"> {{plays?.[actualPlay]?.homeScore}}</p>
     </div>
-
+    <p class="down-distance">{{plays?.[actualPlay]?.start?.downDistanceText}}</p>
 
 
     <canvas class="field" #field width="500" height="250"></canvas>
@@ -35,10 +30,7 @@
         <button (click)="changeActualPlay(+1)">Next</button>
       </div>
     </div>
-    
-    <p id="show-score">{{ plays?.[actualPlay]?.scoringType?.displayName ? plays?.[actualPlay]?.scoringType?.displayName
-      + '!!' : '' }}</p>
 
-
+    <p *ngIf="plays?.[actualPlay]?.scoringType?.displayName" id="show-score" class="animate">{{ plays?.[actualPlay]?.scoringType?.displayName }} !!</p>
   </div>
 </main>

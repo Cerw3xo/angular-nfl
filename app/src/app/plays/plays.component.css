@@ -2,35 +2,50 @@ main {
     position: relative;
     width: 43rem;
     padding: 1rem .5rem;
-    height: 23rem;
+    height: 24rem;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border-right:.1rem solid var(--other-color);
-    border-left:.1rem solid var(--other-color);
+    border-right: .1rem solid var(--other-color);
+    border-left: .1rem solid var(--other-color);
     border-radius: 2.3rem;
     backdrop-filter: blur(.17rem);
 }
 
-.btn-container {
-    flex: 1;
-    position: relative;
-    width: 20rem;
-    height: max-content;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    top: -.2rem;
-}
 
 .game-container {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 4;
+}
 
+.game {
+    height: 3.5rem;
+}
+
+.score-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .7rem;
+    padding: .2rem;
+
+}
+
+.score-container p:not(.down-distance) {
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-shadow: .1rem .05rem .1rem var(--main-color);
+}
+
+.game-container .down-distance {
+    position: relative;
+    top: -.2rem;
+    font-size: .9rem;
+    height: 1rem;
 }
 
 .period-container {
@@ -57,10 +72,17 @@ main {
 .actual-play {
     font-size: 1rem;
     text-align: center;
-    
+
 }
 
-
+.btn-container {
+    position: relative;
+    width: 20rem;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .btn-container button {
     position: relative;
@@ -79,6 +101,7 @@ main {
     overflow: hidden;
     border: none;
     cursor: pointer;
+    top: .2rem;
 }
 
 .btn-container button::before {
@@ -97,19 +120,18 @@ main {
     width: 100%;
 }
 
-
-.score-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .7rem;
-    padding: .2rem;
+.btn-media-control button {
+    width: 2rem;
+    height: .9rem;
 }
 
-.score-container p {
-     font-size: 1.4rem;
-     font-weight: 700;
-     text-shadow: .1rem .05rem .1rem var(--main-color);
+.btn-media-control button:before {
+    content: none;
+}
+
+.btn-manual-control {
+    display: flex;
+    gap: 2rem;
 }
 
 
@@ -120,6 +142,39 @@ main {
     border: .2rem solid var(--main-color);
 }
 
+#show-score {
+    position: absolute;
+    left: 50%;
+    top: 57%;
+    transform: translate(-50%, -50%) scale(.5);
+    color: var(--other-color);
+    font-size: 1.3rem;
+    transition: transform .5s ease-in-out;
+    z-index: 999;
+}
+
+.animate {
+    animation: scaleUp .5s ease-in-out forwards; 
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: translate(-50%, -50%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate( -50%, -50%) scale(1.2);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 930px) {
+    main {
+        top: -1.3rem;
+   } 
+}
+
 @media (max-width: 820px) {
     main {
         border: none;
@@ -127,8 +182,12 @@ main {
         height: 20rem;
     }
 
-    .game-container p  {
+    .game-container p {
         font-size: 1.1rem;
+    }
+
+    .game {
+        height: 2.9rem;
     }
 
     .btn-container button {
@@ -136,6 +195,12 @@ main {
         height: 1.7rem;
         font-size: 1rem;
     }
+
+    .btn-media-control button {
+        width: 2rem;
+        height: .9rem;
+    }
+    
 }
 
 @media (max-width: 720px) {
@@ -145,7 +210,7 @@ main {
         height: 20rem;
     }
 
-    .game-container .game  {
+    .game-container .game {
         font-size: 1.1rem;
         height: 3rem;
         position: relative;
@@ -171,6 +236,15 @@ main {
     .container-head {
         padding: 2rem;
     }
+
+    .game {
+        top: 1.9rem;
+    }
+
+    .btn-media-control button {
+        width: 2rem;
+        height: .9rem;
+    }
 }
 
 @media (max-width: 570px) {
@@ -179,13 +253,13 @@ main {
         width: 21rem;
         height: 18.5rem;
         padding: 0;
+        top: .4rem;
     }
 
-    .game-container .game  {
+    .game-container .game {
         font-size: .9rem;
-        height: 3rem;
         position: relative;
-        top: -1.2rem;
+        top: -1rem;
     }
 
     .btn-container {
@@ -206,6 +280,11 @@ main {
     .period-container {
         position: relative;
         top: -3rem;
+    }
+
+    .btn-media-control button {
+        width: 2rem;
+        height: .9rem;
     }
 
 }
