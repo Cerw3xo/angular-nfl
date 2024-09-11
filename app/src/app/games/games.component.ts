@@ -47,7 +47,7 @@ export class GamesComponent {
       this.year = value;
       this.htttpClient
       .get<any>(
-        'https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/' + this.year + '/types/2/weeks'
+        'http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/' + this.year + '/types/2/weeks'
       )
       .subscribe((x) => {
         this.seasonData = x;
@@ -60,7 +60,7 @@ export class GamesComponent {
       this.year = +(event.target as HTMLSelectElement).value;
       this.htttpClient
       .get<any>(
-        'https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/' + this.year + '/types/2/weeks'
+        'http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/' + this.year + '/types/2/weeks'
       )
       .subscribe((x) => {
   
@@ -74,7 +74,7 @@ export class GamesComponent {
       this.week = value;
       this.htttpClient
       .get<any>(
-        'https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/' + this.year + '/types/2/weeks/' + value + '/events'
+        'http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/' + this.year + '/types/2/weeks/' + value + '/events'
       )
       .subscribe((x) => {
 

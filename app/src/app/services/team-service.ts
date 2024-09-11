@@ -51,27 +51,11 @@ export class TeamService {
   getDivisionRivals(id: number): TeamListItem[] {
 
 
-    // const teamFind =  this.teams1.find(team => {
-    //   return id == team.id;
-    // });
-
-    // console.log('find()');
-    // const teamFind =  this.teams1.find(this.isTeamEqual);
-    // console.log('result: ', teamFind);
-
-    // console.log('filter');
-    // const teamFilter =  this.teams1.filter(this.isTeamEqual);
-    // console.log('result: ', teamFilter);
-
-    console.log('test', false || (true && false));
 
     const displayedTeam = this.teams1.find(team => id == team.id);
     return this.teams1.filter(team => team.division == displayedTeam.division && id != team.id);
   }
 
-  // isTeamEqual(team: TeamListItem): boolean {
-  //   console.log('team', team, 'return', team.id > 25);
-  //   return team.id > 25;
-  // }
+
 }
 

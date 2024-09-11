@@ -36,7 +36,7 @@ export class TeamComponent {
   getTeam (id: number): void {
     this.htttpClient
       .get<any>(
-        'https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/'+id
+        'http://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/'+id
       )
       .subscribe((x) => {
        

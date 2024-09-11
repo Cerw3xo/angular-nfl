@@ -61,7 +61,7 @@ export class EventComponent {
   getTeam(id: string, isHomeTeam: boolean): void {
     this.htttpClient
       .get<Team>(
-        'https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/' + id
+        'http://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/' + id
       )
       .subscribe((x) => {
         if (isHomeTeam) {

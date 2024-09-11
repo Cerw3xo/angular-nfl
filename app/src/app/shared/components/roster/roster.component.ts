@@ -35,7 +35,7 @@ export class RosterComponent {
   }
   getTeam (id: number): void {
     this.htttpClient
-      .get<Roster>('https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/'+id+'/roster')
+      .get<Roster>('http://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/'+id+'/roster')
       .subscribe((x) => {
         this.rosterData = x;
         this.athlete = x.athletes?.[0]?.items?.[0];

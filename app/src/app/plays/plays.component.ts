@@ -52,7 +52,7 @@ export class PlaysComponent implements AfterViewInit {
   getPlays(): void {
     this.htttpClient
       .get<{ items: Play[], pageCount: number }>(
-        'https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/' + this.eventId + '/competitions/' + this.eventId + '/plays?page=' + this.pageIndex
+        'http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events/' + this.eventId + '/competitions/' + this.eventId + '/plays?page=' + this.pageIndex
       )
       .subscribe((x) => {
         if (isPlatformBrowser(this.platformId)) {
@@ -184,7 +184,6 @@ export class PlaysComponent implements AfterViewInit {
     const controlPlay = this.actualPlay + valueChange;
     if (controlPlay >= 0 && controlPlay < this.plays.length) {
       this.actualPlay = controlPlay;
-      console.log(this.actualPlay, this.plays[this.actualPlay]);
       this.updateYardLine();
       this.clearRedrawCanvas();
     }
