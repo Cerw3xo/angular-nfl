@@ -1,0 +1,73 @@
+<main class="player-detail">
+    <div class="player-header">
+        <img class="player-photo" src="" alt="">
+        <div class="player-info">
+            <h2>{{athleteData?.fullName}}</h2>
+            <p>Position: {{athleteData?.position?.name}}</p>
+            <p>Jersey: {{athleteData?.jersey}}</p>
+            <p>Age: {{athleteData?.age}}</p>
+        </div>
+    </div>
+
+    <div class="tabs">
+        <button>Statistics</button>
+        <button>Game Log</button>
+        <button>News</button>
+    </div>
+
+    <div class="tab-content">
+        <h3>Player Statistics</h3>
+        <div class="statistics-table">
+            <h4>{{athleteOverview?.statistics?.displayName}}</h4>
+
+            <div *ngFor=" let split of athleteOverview?.statistics?.splits" >
+                <h5>{{split?.displayName}}</h5>
+                <table>
+                    <thead>
+                        <tr>
+                            <th *ngFor="let label of athleteOverview?.statistics?.labels" >
+                                {{label}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td *ngFor="let stat of split.stats">
+                                {{stat}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <h3>Game Log</h3>
+        <div class="game-log-table">
+            <h3>{{athleteOverview?.gameLog?.displayName}}</h3>
+            
+            <div *ngFor="let stat of athleteOverview?.gameLog?.statistics" >
+                <h4>{{stat?.displayName}}</h4>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th *ngFor="let displayName of stat?.labels">
+                                {{displayName}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let event of stat?.events ">
+                            <td *ngFor="let game of event?.stats">
+                                {{game}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</main>

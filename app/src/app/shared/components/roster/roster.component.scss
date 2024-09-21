@@ -18,45 +18,49 @@
     font-weight: 200;
     position: relative;
     padding: .5rem 1.4rem;
+
+
+
+    .btn-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        gap: .2rem;
+        margin-right: 2rem;
+
+        button {
+            cursor: pointer;
+            position: relative;
+            color: var(--text-color);
+            background: transparent;
+            border: none;
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        button::before {
+            content: ' ';
+            position: absolute;
+            width: 90%;
+            height: 1px;
+            left: 2px;
+            bottom: .1rem;
+            background: var(--text-color);
+            transform-origin: right;
+            transform: scaleX(0);
+            transition: transform .5s;
+        }
+
+        button:hover::before {
+            transform-origin: left;
+            transform: scaleX(1);
+        }
+
+    }
 }
 
 
-.btn-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    gap: .2rem;
-    margin-right: 2rem;
-}
-
-.btn-container button {
-    cursor: pointer;
-    position: relative;
-    color: var(--text-color);
-    background: transparent;
-    border: none;
-    font-size: 1.3rem;
-    font-weight: 500;
-}
-
-button::before {
-    content: ' ';
-    position: absolute;
-    width: 90%;
-    height: 1px;
-    left: 2;
-    bottom: .1rem;
-    background: var(--text-color);
-    transform-origin: right;
-    transform: scaleX(0);
-    transition: transform .5s;
-}
-
-button:hover::before {
-    transform-origin: left;
-    transform: scaleX(1);
-}
 
 .scroll-bar {
     height: 22rem;
@@ -74,61 +78,76 @@ button:hover::before {
     width: 20rem;
     padding: .7rem 1.4rem;
 
+    button {
+        cursor: pointer;
+        position: relative;
+        color: var(--text-color);
+        background: transparent;
+        border: none;
+        font-size: .9rem;
+        font-weight: 500;
+        margin-top: .3rem;
+        border: 1px solid var(--text-color);
+        border-radius: 1rem;
+        padding: .1rem 1rem;
+    }
+
+
+    .player-img-container {
+        position: relative;
+        border: 1px solid var(--other-color);
+        border-radius: 1.2rem;
+        background-image: linear-gradient(to top, rgb(74, 59, 36), rgb(47, 39, 27));
+        width: 10rem;
+        height: 9rem;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: self-end;
+
+        img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            top: .5rem;
+        }
+    }
+
+    .player-heading {
+        color: var(--text-color);
+        text-align: center;
+
+        h1 {
+            font-size: 1.2rem;
+            margin: .2rem;
+            font-weight: 400;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin: 0;
+        }
+    }
+
+    .info-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: .5rem;
+        font-size: 1.3rem;
+        color: var(--second-color);
+
+        p {
+            margin: .4rem 0 0;
+        }
+    }
+
 }
 
-.player-img-container {
-    position: relative;
-    border: 1px solid var(--other-color);
-    border-radius: 1.2rem;
-    background-image: linear-gradient(to top, rgb(74, 59, 36), rgb(47, 39, 27));
-    width: 10rem;
-    height: 9rem;
-    margin-bottom: 1rem;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: self-end;
-}
-
-.player-img-container img {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    top: .5rem;
-
-}
-
-.player-heading {
-    color: var(--text-color);
-    text-align: center;
-}
-
-.player-heading h1 {
-    font-size: 1.2rem;
-    margin: .2rem;
-    font-weight: 400;
-}
-
-.player-heading h3 {
-    font-size: 1.1rem;
-    font-weight: 400;
-    margin: 0;
-}
-
-.info-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: .5rem;
-    font-size: 1.3rem;
-    color: var(--second-color);
-}
-
-.info-container p {
-    margin: .4rem 0 0;
-}
 
 @media (max-width: 925px) {
     .roster-container {
@@ -181,7 +200,7 @@ button:hover::before {
         padding: .7rem .3rem;
         width: max-content;
         text-align: center;
-        }
+    }
 
     .btn-container {
         flex-direction: row;

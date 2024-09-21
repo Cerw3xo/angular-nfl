@@ -1,0 +1,17 @@
+main {
+    color: var(--text-color);
+}
+
+.statistics-table,
+.game-log-table {
+    max-width: 50vw;
+    font-size: .7rem;
+
+    h2, h3,h4, h5 {
+        margin: 0;
+    }
+
+    th {
+        max-width: 70rem;
+    }
+}

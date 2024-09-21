@@ -1,0 +1,105 @@
+.main {
+  position: relative;
+  -webkit-backdrop-filter: blur(0.9rem) brightness(0.7);
+          backdrop-filter: blur(0.9rem) brightness(0.7);
+  background: transparent;
+  padding: 0.3rem 1rem;
+  transition: 0.5s;
+  border-radius: 2.3rem;
+  z-index: 99;
+  width: 73vw;
+}
+
+.heading {
+  color: var(--text-color);
+  font-size: 1.4rem;
+  padding: 0rem 2rem;
+  font-weight: 600;
+  background: transparent;
+  margin: 0;
+}
+
+.heading {
+  margin-bottom: 0.2rem;
+  text-align: center;
+}
+
+.heading span {
+  position: relative;
+  color: var(--second-color);
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.heading .sp {
+  color: var(--other-color);
+  position: relative;
+  top: -0.15rem;
+}
+
+.inOut {
+  color: var(--text-color);
+}
+
+.container-team {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  background: transparent;
+}
+
+.container-team img {
+  width: 92%;
+  position: relative;
+  border-radius: 2.2rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/* Queries  */
+@media (max-width: 1080px) {
+  .main {
+    border-radius: 2rem;
+  }
+  .container-team img {
+    border-radius: 2rem;
+  }
+}
+@media (max-width: 899px) {
+  .main {
+    border-radius: 2rem;
+  }
+  .container-team {
+    position: relative;
+  }
+  .container-team img {
+    border-radius: 2rem;
+    width: 100%;
+  }
+}
+@media (max-width: 610px) {
+  .main {
+    height: 70vh;
+    width: 93vw;
+    padding: 2rem 0.4rem;
+  }
+  .container-team {
+    justify-content: space-between;
+    height: 100%;
+    padding: 0.3rem 0.9rem 0.2rem;
+    justify-content: space-around;
+  }
+  .container-team img {
+    border-radius: 2rem;
+    width: 101%;
+    height: 100%;
+  }
+}
+@media (min-width: 1750px) {
+  .main {
+    width: 75rem;
+  }
+}/*# sourceMappingURL=stadium.component.css.map */

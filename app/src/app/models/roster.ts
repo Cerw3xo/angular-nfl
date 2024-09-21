@@ -1,25 +1,4 @@
-export interface Athlete {
-    fullName: string;
-    jersey: string;
-    weight: string;
-    shortName: string;
-    displayWeight: string;
-    displayHeight: string;
-    dateOfBirth: string;
-    id: string;
-
-    headshot: {
-        href: string;
-    }
-
-    position: {
-        name: string;
-    }
-
-    experience: {
-        years: string;
-    }
-}
+import { Athlete } from "./athlete";
 
 export interface PositionRoster {
     position: string;

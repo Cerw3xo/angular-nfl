@@ -2,10 +2,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, input } from '@angular/core';
 import { ActivatedRoute, RouterModule, RouterOutlet, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Roster, Athlete ,PositionRoster } from '../../../models/roster';
+import { Roster ,PositionRoster } from '../../../models/roster';
 import { PositionRosterComponent } from '../position-roster/position-roster.component';
 import { PositionWeb } from '../../../enums/position-web';
 import { PositionAPI } from '../../../enums/position-api';
+import { Athlete } from '../../../models/athlete';
 
 
 @Component({

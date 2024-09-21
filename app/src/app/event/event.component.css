@@ -1,0 +1,194 @@
+.main {
+  color: var(--text-color);
+  position: relative;
+  border-radius: 2.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem 4rem 3rem;
+  width: 100%;
+  height: 33rem;
+  -webkit-backdrop-filter: blur(0.6rem) brightness(0.7);
+          backdrop-filter: blur(0.6rem) brightness(0.7);
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+.heading-container {
+  text-align: center;
+}
+
+.container-head {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+}
+
+.container-head h2 {
+  font-size: 1.1rem;
+  color: var(--second-color);
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.container-head h1 {
+  font-size: 1.7rem;
+  color: var(--main-color);
+  font-weight: 500;
+  padding-top: 1rem;
+}
+
+.remainingParts,
+.lastPart {
+  margin-left: 0.45rem;
+}
+
+.lastPart {
+  text-shadow: -0.7px -0.7px 0 var(--text-color), 0.7px -0.7px 0 var(--text-color), -0.7px 0.7px 0 var(--text-color), 0.7px 0.7px 0 var(--text-color);
+}
+
+.team-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem 0.3rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.result-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7rem;
+  padding: 0.7rem 2rem;
+}
+
+.team-container img {
+  width: 10rem;
+}
+
+.team-container p {
+  font-size: 1.7rem;
+  font-weight: 600;
+  padding: 0.7rem;
+  margin: 0;
+}
+
+.vs {
+  position: relative;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  font-weight: 500;
+  top: -7rem;
+  left: 1rem;
+  margin: 0;
+}
+
+.vs::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.1rem;
+  left: 0;
+  bottom: 0.2rem;
+  background: var(--text-color);
+}
+
+.container-head button {
+  position: relative;
+  width: 5rem;
+  height: 100%;
+  font-size: 1.05rem;
+  font-weight: 200;
+  border-radius: 2rem;
+  background: var(--other-color);
+  color: var(--text-color);
+  cursor: pointer;
+  border: none;
+}
+
+@media (max-width: 930px) {
+  .main {
+    padding: 2rem;
+  }
+  .container-head h1 {
+    font-size: 1.3rem;
+  }
+  .result-container {
+    padding: 0.7rem 1rem;
+    gap: 4rem;
+  }
+  .container-head button {
+    font-size: 0.95rem;
+    width: 4.7rem;
+  }
+  .heading-container {
+    position: relative;
+    top: -1rem;
+  }
+}
+@media (max-width: 730px) {
+  .main {
+    padding: 1rem;
+  }
+  .heading-container {
+    position: relative;
+    top: -4rem;
+  }
+  .vs {
+    top: -5.5rem;
+  }
+  .container-head h1 {
+    font-size: 1rem;
+  }
+  .result-container {
+    padding: 0.5rem;
+    gap: 2rem;
+  }
+  .team-container img {
+    width: 7rem;
+  }
+}
+@media (max-width: 570px) {
+  .container-head h1 {
+    font-size: 1rem;
+  }
+  .container-head h2 {
+    font-size: 0.9rem;
+  }
+  .vs {
+    display: none;
+  }
+  .result-container {
+    gap: 1rem;
+    position: relative;
+    top: -2rem;
+  }
+  .team-container {
+    font-size: 0.9rem;
+  }
+  .team-container p {
+    font-size: 1.1rem;
+  }
+  .team-container img {
+    width: 6rem;
+  }
+  .playBtn {
+    top: 3.5rem;
+  }
+  .backBtn {
+    position: relative;
+    top: 2rem;
+  }
+}/*# sourceMappingURL=event.component.css.map */

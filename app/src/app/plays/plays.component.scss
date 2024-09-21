@@ -144,9 +144,9 @@ main {
 #show-score {
     position: absolute;
     left: 50%;
-    top: 57%;
-    transform: translate(-50%, -50%) scale(.5);
-    color: var(--other-color);
+    top: 59%;
+    transform: translate(-50%, -50%) scale(.2);
+    color: var(--other-color), 10%;
     font-size: 1.3rem;
     transition: transform .5s ease-in-out;
     z-index: 999;

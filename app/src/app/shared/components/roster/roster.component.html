@@ -13,25 +13,31 @@
         </div>
 
         <div class="scroll-bar" *ngIf="selectedPosition == PositionWeb.Offense">
-            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.Offense)" (selectAthlete)="selectedAthlete($event)"></position-roster>
+            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.Offense)"
+                (selectAthlete)="selectedAthlete($event)"></position-roster>
         </div>
 
         <div class="scroll-bar" *ngIf="selectedPosition == PositionWeb.Defense">
-            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.Defense)" (selectAthlete)="selectedAthlete($event)"></position-roster>
+            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.Defense)"
+                (selectAthlete)="selectedAthlete($event)"></position-roster>
         </div>
 
-        <div *ngIf="selectedPosition == PositionWeb.Special">
-            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.SpecialTeam)" (selectAthlete)="selectedAthlete($event)"></position-roster>
-            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.Suspended)" (selectAthlete)="selectedAthlete($event)"></position-roster>
-            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.Injured)" (selectAthlete)="selectedAthlete($event)"></position-roster>
-            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.Practice)" (selectAthlete)="selectedAthlete($event)"></position-roster>
+        <div class="scroll-bar" *ngIf="selectedPosition == PositionWeb.Special">
+            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.SpecialTeam)"
+                (selectAthlete)="selectedAthlete($event)"></position-roster>
+            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.Suspended)"
+                (selectAthlete)="selectedAthlete($event)"></position-roster>
+            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.Injured)"
+                (selectAthlete)="selectedAthlete($event)"></position-roster>
+            <position-roster [rosterData]="getSelectedPositionRoster(PositionAPI.Practice)"
+                (selectAthlete)="selectedAthlete($event)"></position-roster>
         </div>
     </div>
 
 
     <div class="player-item">
         <div *ngIf="athlete?.headshot?.href" class="player-img-container">
-            <img  src="{{athlete?.headshot?.href}}" alt="" class="player-img">
+            <img src="{{athlete?.headshot?.href}}" alt="" class="player-img">
         </div>
 
         <div class="player-heading">
@@ -45,6 +51,7 @@
             <p>Exp: {{athlete?.experience?.years}} years</p>
             <!-- <p>{{2000203022 | number:'11.1-5'}}</p> -->
         </div>
-        
+
+        <button class="btn-more" [routerLink]="'/athlete/' + athlete?.id ">Stats</button>
     </div>
 </section>
