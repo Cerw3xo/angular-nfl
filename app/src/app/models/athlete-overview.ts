@@ -11,6 +11,10 @@ export interface AthleteOverview {
         displayName: string;
         statistics: GameLogSplits[];
     }
+
+    news: News[];
+
+
 }
 
 export interface Split {
@@ -23,4 +27,10 @@ export interface GameLogSplits {
     labels: string[];
     displayNames: string[];
     events: Split[];
+}
+
+export interface News {
+    headline: string;
+    description: string;
+    published: string;
 }

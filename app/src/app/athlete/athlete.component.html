@@ -10,22 +10,21 @@
     </div>
 
     <div class="tabs">
-        <button>Statistics</button>
-        <button>Game Log</button>
-        <button>News</button>
+        <button (click)="selectTab('statistics')" [class.active]="selectedTab === 'statistics'">Statistics</button>
+        <button (click)="selectTab('game-log')" [class.active]="selectedTab === 'game-log'">Game Log</button>
+        <button (click)="selectTab('news')" [class.active]="selectedTab === 'news'">News</button>
     </div>
 
-    <div class="tab-content">
+    <div class="tab-content" *ngIf="selectedTab === 'statistics'">
         <h3>Player Statistics</h3>
         <div class="statistics-table">
             <h4>{{athleteOverview?.statistics?.displayName}}</h4>
-
             <div *ngFor=" let split of athleteOverview?.statistics?.splits" >
                 <h5>{{split?.displayName}}</h5>
                 <table>
                     <thead>
                         <tr>
-                            <th *ngFor="let label of athleteOverview?.statistics?.labels" >
+                            <th *ngFor="let label of athleteOverview?.statistics?.labels">
                                 {{label}}
                             </th>
                         </tr>
@@ -42,14 +41,12 @@
         </div>
     </div>
 
-    <div class="tab-content">
+    <div class="tab-content" *ngIf="selectedTab === 'game-log'">
         <h3>Game Log</h3>
         <div class="game-log-table">
-            <h3>{{athleteOverview?.gameLog?.displayName}}</h3>
-            
+            <h3>{{athleteOverview?.gameLog?.displayName}}</h3>          
             <div *ngFor="let stat of athleteOverview?.gameLog?.statistics" >
                 <h4>{{stat?.displayName}}</h4>
-
                 <table>
                     <thead>
                         <tr>
@@ -67,7 +64,17 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+    </div>
 
+    <div class="tab-content" *ngIf="selectedTab === 'news'">
+        <h3>News</h3>
+        <div class="news-container">
+            <div *ngFor="let news of athleteOverview?.news">
+                <h4>{{news.headline}}</h4>
+                <span>{{news.published | date: 'short'}}</span>
+                <p>{{news.description}}</p>
+            </div>
         </div>
     </div>
 </main>
