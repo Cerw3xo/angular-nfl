@@ -56,17 +56,17 @@ export class GamesComponent {
       });
     }
 
-    loadSeasonBackUp (event : Event): void {
-      this.year = +(event.target as HTMLSelectElement).value;
-      this.htttpClient
-      .get<any>(
-        'http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/' + this.year + '/types/2/weeks'
-      )
-      .subscribe((x) => {
+    // loadSeasonBackUp (event : Event): void {
+    //   this.year = +(event.target as HTMLSelectElement).value;
+    //   this.htttpClient
+    //   .get<any>(
+    //     'http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/' + this.year + '/types/2/weeks'
+    //   )
+    //   .subscribe((x) => {
   
-        this.seasonData = x;
-      });
-    }
+    //     this.seasonData = x;
+    //   });
+    // }
 
  
 

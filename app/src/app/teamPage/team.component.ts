@@ -42,6 +42,10 @@ export class TeamComponent {
        
         this.teamData = x;
       });
+
+
+
   }
+
 
 }

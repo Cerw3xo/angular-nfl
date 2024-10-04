@@ -22,6 +22,7 @@
           <li>{{ teamData?.team?.nickname }}</li>
           <li>{{ teamData?.team?.abbreviation }}</li>
           <li>{{ teamData?.team?.record?.items?.[0]?.summary}}</li>
+          <li>☞ {{ teamData?.team?.nextEvent?.[0]?.shortName?.replace('@', 'vs')}}</li>
         </ul>
       </div>
     </div>

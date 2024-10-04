@@ -1,0 +1,44 @@
+h3 {
+    margin: 0 0 .5rem;
+    font-weight: 700;
+}
+
+.news-container {
+    max-height: 250px;
+    overflow: auto;
+    font-size: .7rem;
+
+    div {
+        padding: .3rem 0;
+        border-bottom: 1px solid var(--second-color);
+    }
+
+    h4 {
+        font-size: 1.1rem;
+        margin: 0;
+        color: var(--second-color);
+        font-weight: 400;
+    }
+
+    span {
+        color: var(--other-color);
+        margin-bottom: .1rem;
+        display: inline-block;
+        position: relative;
+        top: -.2rem;
+    }
+
+    .author {
+        color: var(--text-color);
+        font-weight: 400;
+        margin-left: .5rem;
+        
+    }
+
+    p {
+        font-size: 1rem;
+        margin: 0 0 .7rem;
+        font-weight: 200;
+        line-height: 1.1;
+    }
+}

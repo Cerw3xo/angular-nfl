@@ -1,0 +1,8 @@
+<!-- <h3>News</h3> -->
+<div class="news-container">
+    <div *ngFor="let news of athleteOverview?.news">
+        <h4>{{news?.headline}}</h4>
+        <span>{{news?.published | date: 'MMMM d yyyy'}} </span> <span class="author">  {{news?.byline}}</span>
+        <p>{{news?.description}}</p>
+    </div>
+</div>

@@ -28,5 +28,11 @@ export interface Team {
       location: string;
       venue: Venue;
     };
+
+    nextEvent: {
+      [0]: {
+        shortName: string;
+      }
+    }
   };
 }

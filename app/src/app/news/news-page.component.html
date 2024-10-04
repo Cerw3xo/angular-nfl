@@ -1,0 +1,17 @@
+<mat-form-field>
+    <mat-label>Team News</mat-label>
+    <mat-select [ngModel]="teamId" (selectionChange)="filterById($event.value)" name="teamFilter">
+        @for (team of teamList; track team) {
+        <mat-option [value]="team.id">{{ team.name }}</mat-option>
+        }
+    </mat-select>
+</mat-form-field>
+
+<input type="text" [(ngModel)]="searchTeamNews" (keyup.enter)="searchChange()" placeholder="🔍 Search">
+
+
+<div class="news-container">
+    <div class="news" *ngFor="let article of news">
+    <p>{{article?.headline}}</p>
+</div>
+</div>

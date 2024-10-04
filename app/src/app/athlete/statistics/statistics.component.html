@@ -1,0 +1,23 @@
+
+    <div class="statistics-table">
+        <h3>{{athleteOverview?.statistics?.displayName}}</h3>
+        <div *ngFor=" let split of athleteOverview?.statistics?.splits">
+            <h5>{{split?.displayName}}</h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th *ngFor="let label of athleteOverview?.statistics?.labels">
+                            {{label}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td *ngFor="let stat of split?.stats">
+                            {{stat}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

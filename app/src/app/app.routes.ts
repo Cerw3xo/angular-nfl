@@ -6,6 +6,7 @@ import { TeamListComponent } from './team-list/team-list.component';
 import { TeamComponent } from './teamPage/team.component';
 import { Routes } from '@angular/router';
 import { AthleteComponent } from './athlete/athlete.component';
+import { NewsPageComponent } from './news/news-page.component';
 
 export const routes: Routes = [
     { path: 'stadium/:id', component: StadiumComponent},
@@ -14,5 +15,6 @@ export const routes: Routes = [
     { path: '', component: TeamListComponent},
     { path: 'games', component: GamesComponent},
     { path: 'event/:id', component: EventComponent},
-    { path: 'athlete/:id', component: AthleteComponent}
+    { path: 'athlete/:id', component: AthleteComponent},
+    { path: 'news-page', component: NewsPageComponent}
 ];

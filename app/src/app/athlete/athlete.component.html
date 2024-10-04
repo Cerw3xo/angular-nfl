@@ -1,9 +1,17 @@
-<main class="player-detail">
+<main>
     <div class="player-header">
-        <img class="player-photo" src="" alt="">
-        <div class="player-info">
+        <div class="player-headshot">
             <h2>{{athleteData?.fullName}}</h2>
+            <div class="player-detail">
+                <img class="player-photo" src="{{athleteData?.headshot?.href}}" alt="">
+            </div>
+        </div>
+        
+        <div class="player-info">
+            <p>Birthplace: {{athleteData?.birthPlace?.city}}, {{athleteData?.birthPlace?.state}}</p>
             <p>Position: {{athleteData?.position?.name}}</p>
+            <p>Weight: {{athleteData?.displayWeight}}</p>
+            <p>Height: {{athleteData?.displayHeight}}</p>
             <p>Jersey: {{athleteData?.jersey}}</p>
             <p>Age: {{athleteData?.age}}</p>
         </div>
@@ -16,65 +24,14 @@
     </div>
 
     <div class="tab-content" *ngIf="selectedTab === 'statistics'">
-        <h3>Player Statistics</h3>
-        <div class="statistics-table">
-            <h4>{{athleteOverview?.statistics?.displayName}}</h4>
-            <div *ngFor=" let split of athleteOverview?.statistics?.splits" >
-                <h5>{{split?.displayName}}</h5>
-                <table>
-                    <thead>
-                        <tr>
-                            <th *ngFor="let label of athleteOverview?.statistics?.labels">
-                                {{label}}
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td *ngFor="let stat of split.stats">
-                                {{stat}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <statistics-page [athleteOverview]="athleteOverview"></statistics-page>
     </div>
 
     <div class="tab-content" *ngIf="selectedTab === 'game-log'">
-        <h3>Game Log</h3>
-        <div class="game-log-table">
-            <h3>{{athleteOverview?.gameLog?.displayName}}</h3>          
-            <div *ngFor="let stat of athleteOverview?.gameLog?.statistics" >
-                <h4>{{stat?.displayName}}</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th *ngFor="let displayName of stat?.labels">
-                                {{displayName}}
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let event of stat?.events ">
-                            <td *ngFor="let game of event?.stats">
-                                {{game}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <game-log-page [athleteOverview]="athleteOverview"></game-log-page>
     </div>
 
     <div class="tab-content" *ngIf="selectedTab === 'news'">
-        <h3>News</h3>
-        <div class="news-container">
-            <div *ngFor="let news of athleteOverview?.news">
-                <h4>{{news.headline}}</h4>
-                <span>{{news.published | date: 'short'}}</span>
-                <p>{{news.description}}</p>
-            </div>
-        </div>
+        <news-page [athleteOverview]="athleteOverview"></news-page>
     </div>
 </main>

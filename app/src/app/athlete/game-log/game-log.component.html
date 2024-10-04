@@ -1,0 +1,22 @@
+<h3>{{athleteOverview?.gameLog?.displayName}}</h3>          
+<div class="game-log-table">
+    <div *ngFor="let stat of athleteOverview?.gameLog?.statistics" >
+        <h4>{{stat?.displayName}}</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th *ngFor="let displayName of stat?.labels">
+                        {{displayName}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let event of stat?.events ">
+                    <td *ngFor="let game of event?.stats">
+                        {{game}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

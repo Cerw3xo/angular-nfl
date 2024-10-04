@@ -1,4 +1,5 @@
 export enum Division {
+    AllDivision,
     AFCNorth,
     AFCEast,
     AFCSouth,
@@ -6,5 +7,5 @@ export enum Division {
     NFCEast,
     NFCNorth,
     NFCSouth,
-    NFCWest
+    NFCWest,
 }
