@@ -4,7 +4,7 @@ h3 {
 }
 
 .news-container {
-    max-height: 250px;
+    max-height: 320px;
     overflow: auto;
     font-size: .7rem;
 
@@ -40,5 +40,42 @@ h3 {
         margin: 0 0 .7rem;
         font-weight: 200;
         line-height: 1.1;
+    }
+}
+
+@media (max-width: 790px) {
+    .news-container {
+        max-height: 300px;
+        h4 {
+            font-size: 1rem;
+        }
+
+        p {
+            font-size: .9rem;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    h3 {
+        font-size: 1rem;
+        text-align: center;
+
+    }
+
+    .news-container {
+        span {
+            font-size: .6rem;
+            top: -.3rem;
+            margin-bottom: 0;
+        }
+        h4 {
+            font-size: .9rem;
+            line-height: 1.1rem;
+        }
+
+        p {
+            font-size: .8rem;
+        }
     }
 }

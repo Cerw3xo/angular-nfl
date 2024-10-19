@@ -1,0 +1,4 @@
+.main {
+    backdrop-filter: blur(.9rem) brightness(.7rem);
+    color: wheat;
+}

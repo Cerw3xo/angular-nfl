@@ -142,12 +142,15 @@ header {
   }
 
   .time {
-    font-size: .9rem;
+    font-size: .8rem;
   }
 }
 @media (max-width: 650px) {
   .time {
     font-size: .6rem;
+  }
+  .navigation a {
+    font-size: .8rem;
   }
 }
 

@@ -18,9 +18,7 @@ main {
         align-items: center;
 
         flex-direction: row;
-        /* gap: 12rem; */
         margin-bottom: 2rem;
-        /* border-bottom: 1px solid var(--text-color); */
         padding: 1.3rem 0 2rem;
 
         .player-headshot {
@@ -119,7 +117,7 @@ main {
 
     .tab-content {
         width: 610px;
-        height: 280px;
+        height: 350px;
     }
 }
 
@@ -140,6 +138,48 @@ main {
 
         .tab-content {
             width: 500px;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    main {
+        padding: 1rem .7rem;
+
+        .player-header {
+            justify-content: space-evenly;
+            padding: .7rem 0 1rem;
+            margin-bottom: 1rem;
+
+            .player-headshot {
+                height: max-content;
+
+                h2 {
+                    font-size: 1rem;
+                }
+
+                .player-detail {
+                    width: 7.7rem;
+                    height: 6.9rem;
+                }
+            }
+
+            .player-info {
+                margin: 0;
+                gap: 0;
+                p {
+                    font-size: .8rem;
+                }
+            }
+        }
+
+        .tabs {
+            justify-content: center;
+            top: -1rem;
+        }
+
+        .tab-content {
+            width: 340px;
         }
     }
 }

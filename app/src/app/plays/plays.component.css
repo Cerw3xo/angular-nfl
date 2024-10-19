@@ -139,7 +139,7 @@ main {
   left: 50%;
   top: 59%;
   transform: translate(-50%, -50%) scale(0.2);
-  color: var(--other-color), 10%;
+  color: var(--other-color);
   font-size: 1.3rem;
   transition: transform 0.5s ease-in-out;
   z-index: 999;

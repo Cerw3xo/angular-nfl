@@ -1,17 +1,38 @@
-<mat-form-field>
-    <mat-label>Team News</mat-label>
-    <mat-select [ngModel]="teamId" (selectionChange)="filterById($event.value)" name="teamFilter">
-        @for (team of teamList; track team) {
-        <mat-option [value]="team.id">{{ team.name }}</mat-option>
-        }
-    </mat-select>
-</mat-form-field>
+<main class="main">
+    <div class="mat-form-container">
+        <mat-form-field>
 
-<input type="text" [(ngModel)]="searchTeamNews" (keyup.enter)="searchChange()" placeholder="🔍 Search">
+            <input type="text" placeholder="Pick Team" aria-label="Number" matInput [(ngModel)]="searchTeamNews"
+                [matAutocomplete]="auto" (input)="filteredChange($event)">
 
+            <button mat-icon-button *ngIf="searchTeamNews" matSuffix (click)="loadReset()"><mat-icon>close</mat-icon>
+            </button>
 
-<div class="news-container">
-    <div class="news" *ngFor="let article of news">
-    <p>{{article?.headline}}</p>
-</div>
-</div>
+        </mat-form-field>
+
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)" [displayWith]="displayFn">
+            @for (team of filteredTeamList; track team) {
+            <mat-option [value]="team">{{team.name}}</mat-option>
+            }
+        </mat-autocomplete>
+    </div>
+
+    <h1>NFL News</h1>
+
+    <div class="news-container" #scrollContainer (scroll)="onScroll()" >
+
+        <div class="news" *ngFor="let article of news">
+            <h2>{{article?.headline}}</h2>
+            <h3>{{article?.type}} </h3>
+            <p>{{article?.description}}</p>
+            <a [href]="article?.links?.web?.href" target="_blank">Read more..</a>
+        </div>
+
+        <!-- <button *ngIf="!teamId" class="load-more-btn" (click)="loadMore()">Load more</button> -->
+
+        <div *ngIf="isLoading" class="spinner-container">
+                  <app-loading-spinner></app-loading-spinner>
+        </div>
+  
+    </div>
+</main>
