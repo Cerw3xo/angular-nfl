@@ -133,15 +133,16 @@ export class NewsPageComponent {
 
 
 	onScroll() {
+		console.log('scroll');
 		const scrollPosition = this.scrollContainer.nativeElement.scrollTop;
 		const maxScroll = this.scrollContainer.nativeElement.scrollHeight - this.scrollContainer.nativeElement.clientHeight;
 
-		clearTimeout(this.intervalOnScroll);
+		//clearTimeout(this.intervalOnScroll);
 
-		if (scrollPosition > maxScroll - 150) {
-			this.intervalOnScroll = setTimeout(() => {
+		if (scrollPosition > maxScroll - 150 && !this.isLoading) {
+
 				this.loadMore();
-			}, 100)
+		
 		}
 	};
 }

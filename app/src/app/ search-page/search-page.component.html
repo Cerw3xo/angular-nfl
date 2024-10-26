@@ -1,0 +1,25 @@
+<main class="main">
+    <div class="mat-form-container">
+        <mat-form-field class="example-full-width">
+            <!-- <mat-label>Favorite food</mat-label> -->
+            <input matInput placeholder="Search" (input)="getSearch($event)">
+        </mat-form-field>
+    </div>
+
+    <h1>NFL News</h1>
+
+    <div class="news-container" #scrollContainer>
+
+        <div class="news" *ngFor="let player of playersResult?.contents">
+            <h2>{{player?.subtitle}}</h2>
+            <h3>{{player?.displayName}} </h3>
+        </div>
+
+        <!-- <button *ngIf="!teamId" class="load-more-btn" (click)="loadMore()">Load more</button> -->
+
+        <div *ngIf="isLoading" class="spinner-container">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+
+    </div>
+</main>
