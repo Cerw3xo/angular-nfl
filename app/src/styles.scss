@@ -12,8 +12,11 @@
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
+  height: max-content;
   margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-y: auto;
   background-color: black;
   background-image: url(assets/images/b.jpeg);
   background-repeat: no-repeat;
@@ -22,11 +25,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 
 @media (max-width: 530px) {
   body {

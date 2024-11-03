@@ -1,25 +1,121 @@
 <main class="main">
     <div class="mat-form-container">
         <mat-form-field class="example-full-width">
-            <!-- <mat-label>Favorite food</mat-label> -->
-            <input matInput placeholder="Search" (input)="getSearch($event)">
+            <input matInput placeholder="Search" [(ngModel)]="searchQuery" (input)="getSearch($event)">
         </mat-form-field>
     </div>
 
-    <h1>NFL News</h1>
+    <h1>ESPN Search Hub</h1>
+
+    <div class="btn-container">
+        <button (click)="selectTab('player')" [ngClass]="{ 'active': selectedTab === 'player'}">Players</button>
+        <button (click)="selectTab('articles')" [ngClass]="{ 'active': selectedTab === 'articles'}">Articles</button>
+        <button (click)="selectTab('clips')" [ngClass]="{ 'active': selectedTab === 'clips'}">Clips</button>
+    </div>
 
     <div class="news-container" #scrollContainer>
+        <article *ngIf="selectedTab === 'player'">
+            <div *ngIf="isLoading; else content" class="spinner-container">
+                <app-loading-spinner></app-loading-spinner>
+            </div>
 
-        <div class="news" *ngFor="let player of playersResult?.contents">
-            <h2>{{player?.subtitle}}</h2>
-            <h3>{{player?.displayName}} </h3>
-        </div>
+            <ng-template #content>
+                 <div *ngIf="searchQuery?.length >= 2; else noSearchQuery">
+                <div class="news" *ngFor="let player of playersResult?.contents">
+                    <div class="heading-container">
+                        <h2>{{player?.displayName}} </h2>
+                        <h3>{{player?.subtitle}}</h3>
+                    </div>
 
-        <!-- <button *ngIf="!teamId" class="load-more-btn" (click)="loadMore()">Load more</button> -->
+                    <div class="img-container">
+                        <a href="{{player?.link?.web}}" target="_blank">
+                            <img *ngIf="player?.image?.defaultDark; else noImage" src="{{player?.image?.defaultDark}}"
+                                alt="">
+                        </a>
+                    </div>
 
-        <div *ngIf="isLoading" class="spinner-container">
-            <app-loading-spinner></app-loading-spinner>
-        </div>
+                    <ng-template #noImage>
+                        <a class="no-img" href="{{player?.link?.web}}" target="_blank">View Profile</a>
+                    </ng-template>
+                </div>
+            </div>
+            </ng-template>
+           
+            <ng-template #noSearchQuery>
+                <div class="no-result-container">
+                    <h2>No Results</h2>
+                    <p>Type at least 3 characters to view results</p>
+                </div>
+            </ng-template>
+        </article>
+
+        <article *ngIf="selectedTab === 'articles'">
+            <div *ngIf="isLoading; else content" class="spinner-container">
+                <app-loading-spinner></app-loading-spinner>
+            </div>
+
+            <ng-template #content>
+                  <div *ngIf="searchQuery?.length >= 2; else noSearchQuery">
+                <div class="articles" *ngFor="let article of articleResult?.contents">
+                    <h2>{{article?.type}}</h2>
+                    <h3>{{article?.displayName}}</h3>
+                    <a href="{{article?.link?.web}}" target="_blank">Read More..</a>
+
+                    <div class="date-container">
+                        <p>{{article?.byline}}</p>
+                        <span>{{article?.date | date: 'MM/dd/yyyy' }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <ng-template #noSearchQuery>
+                <div class="no-result-container">
+                    <h2>No Results</h2>
+                    <p>Type at least 3 characters to view results</p>
+
+                </div>
+            </ng-template>
+            </ng-template>
+          
+        </article>
+
+        <article *ngIf="selectedTab === 'clips'">
+            <div *ngIf="isLoading; else content" class="spinner-container">
+                <app-loading-spinner></app-loading-spinner>
+            </div>
+
+            <ng-template #content>
+                <div *ngIf="searchQuery?.length >= 2; else noSearchQuery">
+                <div class="clips" *ngFor="let clips of clipResult?.contents">
+
+                    <div class="clips-container">
+                        <h2>{{clips?.displayName}}</h2>
+                        <h3>{{clips?.subtitle}}</h3><span>{{clips?.date | date: 'MM/dd/yyyy'}}</span>
+                    </div>
+
+                    <div class="clips-img-container">
+                        <a href="{{clips?.link?.web}}" target="_blank"><img src="{{clips?.image?.default}}"
+                                alt=""><mat-icon>play_arrow</mat-icon>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <ng-template #noSearchQuery>
+                <div class="no-result-container">
+                    <h2>No Results</h2>
+                    <p>Type at least 3 characters to view results</p>
+
+                </div>
+            </ng-template>
+            </ng-template>
+            
+        </article>
+
+
+
+   
 
     </div>
 </main>

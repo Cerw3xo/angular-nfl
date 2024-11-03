@@ -8,7 +8,10 @@
         </div>
         
         <div class="player-info">
-            <p>Birthplace: {{athleteData?.birthPlace?.city}}, {{athleteData?.birthPlace?.state}}</p>
+            <!-- <p>Birthplace: {{athleteData?.birthPlace?.city}}, {{athleteData?.birthPlace?.state}}</p> -->
+            <p>Birthplace: {{athleteData?.birthPlace | birthplace}}</p>
+            <!-- <p>Birthplace: {{undefined | birthplace}}</p>
+            <p>Birthplace: {{undefined | birthplace: '***'}}</p> -->
             <p>Position: {{athleteData?.position?.name}}</p>
             <p>Weight: {{athleteData?.displayWeight}}</p>
             <p>Height: {{athleteData?.displayHeight}}</p>

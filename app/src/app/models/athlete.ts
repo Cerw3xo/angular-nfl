@@ -1,3 +1,8 @@
+export interface Birthplace {
+    city: string;
+    state: string;
+}
+
 export interface Athlete {
     fullName: string;
     jersey: string;
@@ -10,10 +15,7 @@ export interface Athlete {
     id: string;
     age: number;
 
-    birthPlace: {
-        city: string;
-        state: string;
-    }
+    birthPlace: Birthplace;
 
 
     headshot: {

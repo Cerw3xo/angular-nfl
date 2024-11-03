@@ -8,11 +8,12 @@ import { AthleteOverview } from '../models/athlete-overview';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { GameLogComponent } from './game-log/game-log.component';
 import { NewsComponent } from './news/news.component';
+import { BirtplacePipe } from '../shared/pipes/birthplace-pipe';
 
 @Component({
   selector: 'athlete-page',
   standalone: true,
-  imports: [RouterModule, RosterComponent, CommonModule, StatisticsComponent, GameLogComponent, NewsComponent],
+  imports: [RouterModule, RosterComponent, CommonModule, StatisticsComponent, GameLogComponent, NewsComponent, BirtplacePipe],
   templateUrl: './athlete.component.html',
   styleUrl: './athlete.component.css',
 })
